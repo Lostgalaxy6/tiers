@@ -2,7 +2,7 @@
 const SPARK_DATA = {
   "whynotking": {
     "name": "WhyNotKing",
-    "region": "NA",
+    "region": "AS",
     "tiers": {
       "nethop": "LT4"
     },

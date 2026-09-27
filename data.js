@@ -28,5 +28,14 @@ const SPARK_DATA = {
     },
     "rankedBy": "1_truthoflife_1",
     "rankedAt": "2026-09-27"
+  },
+  "atkillerninja": {
+    "name": "atkillerninja",
+    "region": "AS",
+    "tiers": {
+      "nethop": "LT4"
+    },
+    "rankedBy": "not_ry1",
+    "rankedAt": "2026-09-27"
   }
 };

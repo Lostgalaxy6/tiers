@@ -23,9 +23,10 @@ const SPARK_DATA = {
     "name": "Not_RY",
     "region": "AS",
     "tiers": {
-      "nethop": "LT3"
+      "nethop": "LT3",
+      "sword": "LT4"
     },
-    "rankedBy": "not_ry1",
+    "rankedBy": "1_truthoflife_1",
     "rankedAt": "2026-09-27"
   }
 };

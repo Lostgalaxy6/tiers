@@ -4,9 +4,10 @@ const SPARK_DATA = {
     "name": "WhyNotKing",
     "region": "AS",
     "tiers": {
-      "nethop": "LT4"
+      "nethop": "LT4",
+      "sword": "LT4"
     },
-    "rankedBy": "lostgalax_y",
+    "rankedBy": "1_truthoflife_1",
     "rankedAt": "2026-09-27"
   },
   "lostgalaxy67": {

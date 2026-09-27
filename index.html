@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>SparkTiers - Rankings</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/skinview3d@2.2.1/bundles/skinview3d.bundle.js" defer></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -341,7 +342,6 @@ a{color:inherit;text-decoration:none}
   <div class="th">#</div>
   <div class="th">PLAYER</div>
   <div class="th">REGION</div>
-  <!-- gamemode icons as column headers, matching each tier column below -->
   <div style="display:flex;gap:3px;align-items:center" id="tiersHeader">
     <div class="tiw" style="width:36px"><img src="icons/vanilla.svg" style="width:18px;height:18px;opacity:.4"/></div>
     <div class="tiw" style="width:36px"><img src="icons/uhc.svg"     style="width:18px;height:18px;opacity:.4"/></div>
@@ -378,14 +378,14 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<script src="data.js"></script>
 <script>
-// data loaded from data.js
-
 // ══════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════
-const TIER_ORDER = ['HT1','HT2','HT3','HT4','HT5','HT6','LT1','LT2','LT3','LT4','LT5','LT6'];
+
+// Tier order best → worst: HT1 is best, LT6 is worst.
+// Alternates HT/LT per number: HT1 > LT1 > HT2 > LT2 > ... > HT6 > LT6
+const TIER_ORDER = ['HT1','LT1','HT2','LT2','HT3','LT3','HT4','LT4','HT5','LT5','HT6','LT6'];
 const TIER_COLOR = {
   HT1:'#ff3333',HT2:'#ff6600',HT3:'#f5a623',
   HT4:'#a3e635',HT5:'#22d3ee',HT6:'#38bdf8',
@@ -395,14 +395,21 @@ const TIER_COLOR = {
 const GM_ALL    = ['vanilla','uhc','pot','nethop','smp','sword','axe','mace'];
 const GM_LABELS = {overall:'Overall',vanilla:'Vanilla',uhc:'UHC',pot:'Pot',nethop:'NethOP',smp:'SMP',sword:'Sword',axe:'Axe',mace:'Mace'};
 const RANK_TITLES = [
-  {min:400,title:'Combat Legend',    color:'#ff3333'},
+  {min:400,title:'Combat Legend',     color:'#ff3333'},
   {min:300,title:'Combat Grandmaster',color:'#ff6600'},
-  {min:200,title:'Combat Master',    color:'#f5a623'},
-  {min:100,title:'Combat Ace',       color:'#a3e635'},
-  {min:0,  title:'Combat Rookie',    color:'#94a3b8'},
+  {min:200,title:'Combat Master',     color:'#f5a623'},
+  {min:100,title:'Combat Ace',        color:'#a3e635'},
+  {min:0,  title:'Combat Rookie',     color:'#94a3b8'},
 ];
-// tier point values for ranking score
-const TIER_PTS = {HT1:100,HT2:80,HT3:60,HT4:45,HT5:35,HT6:25,LT1:18,LT2:12,LT3:8,LT4:5,LT5:3,LT6:1};
+// Points match the alternating tier order above
+const TIER_PTS = {
+  HT1:100, LT1:90,
+  HT2:80,  LT2:70,
+  HT3:60,  LT3:50,
+  HT4:40,  LT4:30,
+  HT5:20,  LT5:12,
+  HT6:6,   LT6:2
+};
 
 let curGM = 'overall', curRegion = 'AS';
 
@@ -470,16 +477,15 @@ function render(){
     row.className='player-row';
     row.onclick=()=>openModal(p);
 
-    // ── rank cell ──
     const rankEl = document.createElement('div');
     rankEl.className='p-rank'+(rank===1?' gold':rank===2?' silver':rank===3?' bronze':'');
     rankEl.textContent=rank+'.';
 
-    // ── info cell ──
     const info = document.createElement('div');
     info.className='p-info';
     info.innerHTML=`
-      <img class="p-head" src="${headURL(p.name)}" alt="${p.name}" onerror="this.style.opacity='.3'"/>
+      <img class="p-head" src="${headURL(p.name)}" alt="${p.name}"
+           onerror="this.src='https://mc-heads.net/avatar/MHF_Steve/40'"/>
       <div>
         <div class="p-name">${p.name}</div>
         <div class="p-title">
@@ -489,16 +495,13 @@ function render(){
         </div>
       </div>`;
 
-    // ── region cell ──
     const regionEl = document.createElement('div');
     regionEl.innerHTML=`<div class="p-region">${p.region}</div>`;
 
-    // ── tiers cell ──
     const tiersEl = document.createElement('div');
     tiersEl.className='p-tiers';
 
     if(curGM==='overall'){
-      // icon on top, tier badge below — exactly like MCTiers
       GM_ALL.forEach(gm=>{
         const t=(p.tiers||{})[gm];
         const wrap=document.createElement('div');
@@ -515,7 +518,6 @@ function render(){
         tiersEl.appendChild(wrap);
       });
     } else {
-      // single gamemode view — one icon + big badge
       const t=getTier(p,curGM);
       const wrap=document.createElement('div');
       wrap.className='tiw';
@@ -538,19 +540,15 @@ function render(){
 // ══════════════════════════════════════════════
 //  MODAL + 3D SKIN
 // ══════════════════════════════════════════════
-let sv3d=false;
-function loadSV3D(cb){
-  if(window.skinview3d){cb();return;}
-  const s=document.createElement('script');
-  s.src='https://cdn.jsdelivr.net/npm/skinview3d@2.2.1/bundles/skinview3d.bundle.js';
-  s.onload=()=>{sv3d=true;cb()};
-  s.onerror=()=>cb();
-  document.head.appendChild(s);
-}
 function makeSkin(wrap,name,w,h,opts={}){
   wrap.innerHTML='';
   if(!window.skinview3d){
-    const i=document.createElement('img');i.src=headURL(name);i.className='fb';wrap.appendChild(i);return;
+    const i=document.createElement('img');
+    i.src=headURL(name);
+    i.className='fb';
+    i.onerror=()=>{i.src='https://mc-heads.net/avatar/MHF_Steve/40';};
+    wrap.appendChild(i);
+    return;
   }
   const c=document.createElement('canvas');
   c.width=w*2;c.height=h*2;c.style.width=w+'px';c.style.height=h+'px';
@@ -590,7 +588,7 @@ function openModal(p){
     `Ranked by ${p.rankedBy||'Staff'} · ${p.rankedAt||''}`;
 
   const sw=document.getElementById('modalSkin');
-  loadSV3D(()=>makeSkin(sw,p.name,80,110,{zoom:44,camY:8,walk:true,rotate:true}));
+  makeSkin(sw,p.name,80,110,{zoom:44,camY:8,walk:true,rotate:true});
   document.getElementById('overlay').classList.add('open');
 }
 function closeModal(){
@@ -632,7 +630,8 @@ si.addEventListener('input',function(){
     hits.forEach(p=>{
       const best=getBest(p);const color=best?TIER_COLOR[best]:'var(--muted)';
       const row=document.createElement('div');row.className='sd-row';
-      row.innerHTML=`<img src="${headURL(p.name)}" alt="${p.name}" onerror="this.style.opacity='.2'"/>
+      row.innerHTML=`<img src="${headURL(p.name)}" alt="${p.name}"
+          onerror="this.src='https://mc-heads.net/avatar/MHF_Steve/40'"/>
         <div><div class="sd-name">${p.name}</div>
         <div class="sd-sub" style="color:${color}">${best||'Unranked'} · ${p.region}</div></div>`;
       row.onclick=()=>{sd.classList.remove('open');si.value='';openModal(p);};
@@ -644,9 +643,18 @@ si.addEventListener('input',function(){
 document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))sd.classList.remove('open');});
 
 // ══════════════════════════════════════════════
-//  INIT
+//  INIT — load data.js fresh every time (no browser cache)
 // ══════════════════════════════════════════════
-render();
+(function loadData(){
+  const s = document.createElement('script');
+  s.src = 'data.js?t=' + Date.now();
+  s.onload = render;
+  s.onerror = function(){
+    document.getElementById('playersList').innerHTML =
+      '<div class="empty-state">Failed to load player data.</div>';
+  };
+  document.head.appendChild(s);
+})();
 </script>
 </body>
 </html>

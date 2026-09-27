@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SparkTiers - Rankings</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0f;
+  --surface:#111115;
+  --card:#16161a;
+  --border:#1f1f27;
+  --border2:#2a2a36;
+  --text:#f0f0f5;
+  --muted:#55556a;
+  --muted2:#8888a0;
+  --spark:#f5a623;
+}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100%}
+a{color:inherit;text-decoration:none}
+
+/* ── TOP NAV ── */
+.topnav{
+  height:52px;display:flex;align-items:center;
+  padding:0 20px;gap:8px;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:100;
+}
+.nav-logo{
+  font-weight:800;font-size:1.1rem;
+  color:var(--spark);letter-spacing:.02em;
+  margin-right:12px;white-space:nowrap;
+  font-style:italic;
+}
+.nav-logo span{color:var(--text)}
+.nav-link{
+  display:flex;align-items:center;gap:6px;
+  font-size:.8rem;font-weight:500;color:var(--muted2);
+  padding:6px 10px;border-radius:6px;
+  transition:color .12s,background .12s;white-space:nowrap;
+}
+.nav-link:hover{color:var(--text);background:var(--card)}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.search-wrap{position:relative}
+.search-wrap input{
+  background:var(--card);border:1px solid var(--border2);
+  color:var(--text);font-family:'Inter',sans-serif;font-size:.78rem;
+  padding:6px 10px 6px 28px;border-radius:7px;width:160px;outline:none;
+  transition:border-color .2s,width .2s;
+}
+.search-wrap input::placeholder{color:var(--muted)}
+.search-wrap input:focus{border-color:var(--spark);width:200px}
+.search-wrap .si{position:absolute;left:8px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.75rem;pointer-events:none}
+.search-drop{
+  display:none;position:absolute;top:36px;right:0;
+  width:260px;background:var(--surface);
+  border:1px solid var(--border2);border-radius:8px;
+  overflow:hidden;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,.5);
+}
+.search-drop.open{display:block}
+.sd-row{
+  display:flex;align-items:center;gap:10px;padding:9px 12px;
+  cursor:pointer;border-bottom:1px solid var(--border);transition:background .1s;
+}
+.sd-row:last-child{border:none}
+.sd-row:hover{background:var(--card)}
+.sd-row img{width:30px;height:30px;image-rendering:pixelated;border-radius:3px;flex-shrink:0}
+.sd-name{font-size:.82rem;font-weight:600}
+.sd-sub{font-size:.7rem;color:var(--muted2);margin-top:1px}
+.discord-btn{
+  display:flex;align-items:center;gap:5px;
+  background:#5865F2;color:#fff;
+  font-size:.74rem;font-weight:700;
+  padding:6px 12px;border-radius:7px;
+  white-space:nowrap;transition:opacity .15s;
+}
+.discord-btn:hover{opacity:.85}
+
+/* ── GAMEMODE TABS ── */
+.gm-tabs{
+  display:flex;align-items:flex-end;
+  padding:0 20px;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  overflow-x:auto;scrollbar-width:none;
+}
+.gm-tabs::-webkit-scrollbar{display:none}
+.gm-tab{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:10px 14px 0;cursor:pointer;
+  font-size:.72rem;font-weight:600;color:var(--muted2);
+  border-bottom:2px solid transparent;
+  transition:color .12s;white-space:nowrap;
+  position:relative;top:1px;min-width:60px;
+  user-select:none;
+}
+.gm-tab img{width:28px;height:28px;object-fit:contain;margin-bottom:2px;opacity:.6;transition:opacity .12s}
+.gm-tab:hover{color:var(--text)}
+.gm-tab:hover img{opacity:.85}
+.gm-tab.active{color:var(--text);border-bottom-color:var(--spark)}
+.gm-tab.active img{opacity:1}
+
+/* ── SUB BAR (info + region) ── */
+.subbar{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 20px;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+}
+.region-label{font-size:.72rem;color:var(--muted);font-weight:500}
+.rbtn{
+  font-size:.7rem;font-weight:700;letter-spacing:.04em;
+  padding:3px 10px;border-radius:5px;
+  border:1px solid var(--border2);color:var(--muted2);
+  background:transparent;cursor:pointer;transition:all .12s;
+}
+.rbtn:hover{color:var(--text);border-color:var(--muted2)}
+.rbtn.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+.subbar-right{margin-left:auto;font-size:.72rem;color:var(--muted)}
+
+/* ── TABLE HEADER ── */
+.table-head{
+  display:grid;
+  grid-template-columns:44px 220px 70px 1fr;
+  align-items:center;gap:0;
+  padding:8px 20px;
+  border-bottom:1px solid var(--border);
+}
+.th{font-size:.65rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+/* ── PLAYER ROWS ── */
+.players-list{padding:0 20px 80px}
+
+.player-row{
+  display:grid;
+  grid-template-columns:44px 220px 70px 1fr;
+  align-items:center;gap:0;
+  padding:9px 0;
+  border-bottom:1px solid var(--border);
+  cursor:pointer;transition:background .1s;
+}
+.player-row:hover{background:var(--card);margin:0 -20px;padding:9px 20px;border-radius:8px;border-color:transparent}
+.player-row:last-child{border-bottom:none}
+
+/* rank */
+.p-rank{font-size:.9rem;font-weight:800;color:var(--muted2);text-align:center}
+.p-rank.gold  {color:#f5a623}
+.p-rank.silver{color:#94a3b8}
+.p-rank.bronze{color:#cd7f32}
+
+/* player info */
+.p-info{display:flex;align-items:center;gap:10px;min-width:0}
+.p-head{width:38px;height:38px;image-rendering:pixelated;border-radius:4px;flex-shrink:0}
+.p-name{font-size:.86rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p-title{font-size:.66rem;color:var(--muted2);margin-top:2px;display:flex;align-items:center;gap:4px}
+.p-title-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* region */
+.p-region{
+  font-size:.68rem;font-weight:700;letter-spacing:.05em;
+  padding:3px 8px;border-radius:5px;
+  border:1px solid var(--border2);
+  color:var(--text);background:var(--card);
+  width:fit-content;
+}
+
+/* ── TIERS CELL — icon on top, badge below, tight row ── */
+.p-tiers{
+  display:flex;align-items:flex-start;
+  gap:3px;
+}
+.tiw{
+  display:flex;flex-direction:column;align-items:center;
+  gap:3px;width:36px;
+}
+.tiw img{
+  width:20px;height:20px;object-fit:contain;
+}
+.tiw img.dim{opacity:.2}
+.tib{
+  font-size:.52rem;font-weight:800;letter-spacing:.02em;
+  padding:1px 3px;border-radius:3px;
+  white-space:nowrap;text-align:center;
+  min-width:26px;
+}
+.tib.empty{color:var(--border2);background:transparent;border:none}
+
+/* empty state */
+.empty-state{
+  padding:60px 20px;text-align:center;
+  font-size:.85rem;color:var(--muted);
+}
+
+/* ── TIER COLORS ── */
+.c-HT1{color:#ff3333}.c-HT2{color:#ff6600}.c-HT3{color:#f5a623}
+.c-HT4{color:#a3e635}.c-HT5{color:#22d3ee}.c-HT6{color:#38bdf8}
+.c-LT1{color:#818cf8}.c-LT2{color:#a78bfa}.c-LT3{color:#94a3b8}
+.c-LT4{color:#64748b}.c-LT5{color:#475569}.c-LT6{color:#334155}
+
+.bg-HT1{background:rgba(255,51,51,.18);border:1px solid rgba(255,51,51,.35)}
+.bg-HT2{background:rgba(255,102,0,.18);border:1px solid rgba(255,102,0,.35)}
+.bg-HT3{background:rgba(245,166,35,.18);border:1px solid rgba(245,166,35,.35)}
+.bg-HT4{background:rgba(163,230,53,.18);border:1px solid rgba(163,230,53,.35)}
+.bg-HT5{background:rgba(34,211,238,.18);border:1px solid rgba(34,211,238,.35)}
+.bg-HT6{background:rgba(56,189,248,.18);border:1px solid rgba(56,189,248,.35)}
+.bg-LT1{background:rgba(129,140,248,.18);border:1px solid rgba(129,140,248,.35)}
+.bg-LT2{background:rgba(167,139,250,.18);border:1px solid rgba(167,139,250,.35)}
+.bg-LT3{background:rgba(148,163,184,.18);border:1px solid rgba(148,163,184,.35)}
+.bg-LT4{background:rgba(100,116,139,.18);border:1px solid rgba(100,116,139,.35)}
+.bg-LT5{background:rgba(71,85,105,.18);border:1px solid rgba(71,85,105,.35)}
+.bg-LT6{background:rgba(51,65,85,.25);border:1px solid rgba(51,65,85,.5)}
+
+/* ── MODAL ── */
+.overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);align-items:center;justify-content:center}
+.overlay.open{display:flex}
+.modal{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:16px;width:420px;max-width:95vw;
+  overflow:hidden;animation:modalIn .18s ease;
+  box-shadow:0 24px 64px rgba(0,0,0,.7);
+}
+@keyframes modalIn{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+.modal-top-bar{height:3px;width:100%}
+.modal-head{
+  padding:28px 24px 18px;
+  display:flex;align-items:center;gap:16px;
+  background:var(--bg);position:relative;
+}
+.modal-close{
+  position:absolute;top:12px;right:14px;
+  background:var(--card);border:1px solid var(--border2);
+  color:var(--muted2);width:26px;height:26px;border-radius:6px;
+  font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+.modal-close:hover{color:var(--text)}
+.modal-skin-wrap{
+  width:80px;height:110px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;flex-shrink:0;
+}
+.modal-skin-wrap canvas{width:80px!important;height:110px!important}
+.modal-skin-wrap .fb{width:56px;height:56px;image-rendering:pixelated;border-radius:4px}
+.modal-info{}
+.modal-name{font-size:1.3rem;font-weight:800}
+.modal-sub{font-size:.75rem;color:var(--muted2);margin-top:3px}
+.modal-region-tag{
+  display:inline-block;margin-top:6px;
+  font-size:.68rem;font-weight:700;letter-spacing:.05em;
+  padding:2px 8px;border-radius:4px;
+  background:var(--card);border:1px solid var(--border2);
+}
+.modal-body{padding:16px 20px 20px}
+.modal-section{font-size:.66rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.modal-tiers-grid{display:flex;flex-direction:column;gap:5px}
+.modal-tier-row{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 12px;background:var(--bg);
+  border:1px solid var(--border);border-radius:7px;
+}
+.modal-tier-row img{width:20px;height:20px;object-fit:contain;flex-shrink:0}
+.modal-tier-gm{font-size:.8rem;font-weight:500;flex:1}
+.modal-tier-badge{
+  font-size:.75rem;font-weight:800;letter-spacing:.04em;
+  padding:2px 8px;border-radius:4px;
+}
+.modal-footer{padding:10px 20px;border-top:1px solid var(--border);font-size:.68rem;color:var(--muted);text-align:center}
+
+@media(max-width:600px){
+  .table-head,.player-row{grid-template-columns:36px 1fr 56px}
+  .p-tiers{display:none}
+  .th.tiers-th{display:none}
+  .topnav .nav-link{display:none}
+  .search-wrap input{width:120px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ TOP NAV ══ -->
+<nav class="topnav">
+  <div class="nav-logo">⚡SPARK<span>TIERS</span></div>
+  <a class="nav-link" href="#">🏠 Home</a>
+  <a class="nav-link" href="#">🏆 Rankings</a>
+  <a class="nav-link" href="https://discord.gg/REPLACE_ME" target="_blank">💬 Discord</a>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <span class="si">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search player..." autocomplete="off"/>
+      <div class="search-drop" id="searchDrop"></div>
+    </div>
+    <a class="discord-btn" href="https://discord.gg/REPLACE_ME" target="_blank">
+      <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M13.545 1.005A13.2 13.2 0 0 0 10.26 0c-.145.262-.314.614-.43.893a12.18 12.18 0 0 0-3.661 0A9.87 9.87 0 0 0 5.736 0 13.23 13.23 0 0 0 2.45 1.008C.352 4.137-.216 7.187.068 10.194c1.394 1.027 2.745 1.65 4.075 2.059.329-.449.62-.929.871-1.435a8.663 8.663 0 0 1-1.372-.663c.115-.084.228-.172.337-.262 2.645 1.226 5.515 1.226 8.127 0 .11.09.222.178.337.262-.437.26-.9.484-1.373.664.251.505.542.986.872 1.434 1.331-.408 2.683-1.031 4.077-2.059.337-3.52-.573-6.542-2.451-9.19ZM5.34 8.346c-.79 0-1.44-.728-1.44-1.624s.634-1.624 1.44-1.624c.806 0 1.454.727 1.44 1.624 0 .896-.634 1.624-1.44 1.624Zm5.32 0c-.79 0-1.44-.728-1.44-1.624s.634-1.624 1.44-1.624c.807 0 1.455.727 1.44 1.624 0 .896-.633 1.624-1.44 1.624Z" fill="currentColor"/></svg>
+      Discord
+    </a>
+  </div>
+</nav>
+
+<!-- ══ GAMEMODE TABS ══ -->
+<div class="gm-tabs" id="gmTabs">
+  <div class="gm-tab active" data-gm="overall">
+    <img src="icons/overall.svg" alt=""/><span>Overall</span>
+  </div>
+  <div class="gm-tab" data-gm="vanilla">
+    <img src="icons/vanilla.svg" alt=""/><span>Vanilla</span>
+  </div>
+  <div class="gm-tab" data-gm="uhc">
+    <img src="icons/uhc.svg" alt=""/><span>UHC</span>
+  </div>
+  <div class="gm-tab" data-gm="pot">
+    <img src="icons/pot.svg" alt=""/><span>Pot</span>
+  </div>
+  <div class="gm-tab" data-gm="nethop">
+    <img src="icons/nethop.svg" alt=""/><span>NethOP</span>
+  </div>
+  <div class="gm-tab" data-gm="smp">
+    <img src="icons/smp.svg" alt=""/><span>SMP</span>
+  </div>
+  <div class="gm-tab" data-gm="sword">
+    <img src="icons/sword.svg" alt=""/><span>Sword</span>
+  </div>
+  <div class="gm-tab" data-gm="axe">
+    <img src="icons/axe.svg" alt=""/><span>Axe</span>
+  </div>
+  <div class="gm-tab" data-gm="mace">
+    <img src="icons/mace.svg" alt=""/><span>Mace</span>
+  </div>
+</div>
+
+<!-- ══ SUBBAR ══ -->
+<div class="subbar">
+  <span class="region-label">Region</span>
+  <button class="rbtn active" onclick="switchRegion('AS',this)">AS</button>
+  <div class="subbar-right" id="playerCount">0 players</div>
+</div>
+
+<!-- ══ TABLE HEADER ══ -->
+<div class="table-head">
+  <div class="th">#</div>
+  <div class="th">PLAYER</div>
+  <div class="th">REGION</div>
+  <!-- gamemode icons as column headers, matching each tier column below -->
+  <div style="display:flex;gap:3px;align-items:center" id="tiersHeader">
+    <div class="tiw" style="width:36px"><img src="icons/vanilla.svg" style="width:18px;height:18px;opacity:.4"/></div>
+    <div class="tiw" style="width:36px"><img src="icons/uhc.svg"     style="width:18px;height:18px;opacity:.4"/></div>
+    <div class="tiw" style="width:36px"><img src="icons/pot.svg"     style="width:18px;height:18px;opacity:.4"/></div>
+    <div class="tiw" style="width:36px"><img src="icons/nethop.svg"  style="width:18px;height:18px;opacity:.4"/></div>
+    <div class="tiw" style="width:36px"><img src="icons/smp.svg"     style="width:18px;height:18px;opacity:.4"/></div>
+    <div class="tiw" style="width:36px"><img src="icons/sword.svg"   style="width:18px;height:18px;opacity:.4"/></div>
+    <div class="tiw" style="width:36px"><img src="icons/axe.svg"     style="width:18px;height:18px;opacity:.4"/></div>
+    <div class="tiw" style="width:36px"><img src="icons/mace.svg"    style="width:18px;height:18px;opacity:.4"/></div>
+  </div>
+</div>
+
+<!-- ══ PLAYER LIST ══ -->
+<div class="players-list" id="playersList"></div>
+
+<!-- ══ MODAL ══ -->
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-top-bar" id="modalBar"></div>
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-skin-wrap" id="modalSkin"></div>
+      <div class="modal-info">
+        <div class="modal-name" id="modalName"></div>
+        <div class="modal-sub"  id="modalSub"></div>
+        <div class="modal-region-tag" id="modalRegion"></div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">Gamemode Tiers</div>
+      <div class="modal-tiers-grid" id="modalTiersGrid"></div>
+    </div>
+    <div class="modal-footer" id="modalFooter"></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+//  DATA  (bot rewrites this)
+// ══════════════════════════════════════════════
+const SPARK_DATA = {
+  "Lostgalaxy6":{
+    name:"Lostgalaxy6", region:"AS",
+    tiers:{ mace:"LT4", smp:"LT4", pot:"LT6" },
+    rankedBy:"SparkTiers Staff", rankedAt:"2026-09-26"
+  }
+};
+
+// ══════════════════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════════════════
+const TIER_ORDER = ['HT1','HT2','HT3','HT4','HT5','HT6','LT1','LT2','LT3','LT4','LT5','LT6'];
+const TIER_COLOR = {
+  HT1:'#ff3333',HT2:'#ff6600',HT3:'#f5a623',
+  HT4:'#a3e635',HT5:'#22d3ee',HT6:'#38bdf8',
+  LT1:'#818cf8',LT2:'#a78bfa',LT3:'#94a3b8',
+  LT4:'#64748b',LT5:'#475569',LT6:'#334155'
+};
+const GM_ALL    = ['vanilla','uhc','pot','nethop','smp','sword','axe','mace'];
+const GM_LABELS = {overall:'Overall',vanilla:'Vanilla',uhc:'UHC',pot:'Pot',nethop:'NethOP',smp:'SMP',sword:'Sword',axe:'Axe',mace:'Mace'};
+const RANK_TITLES = [
+  {min:400,title:'Combat Legend',    color:'#ff3333'},
+  {min:300,title:'Combat Grandmaster',color:'#ff6600'},
+  {min:200,title:'Combat Master',    color:'#f5a623'},
+  {min:100,title:'Combat Ace',       color:'#a3e635'},
+  {min:0,  title:'Combat Rookie',    color:'#94a3b8'},
+];
+// tier point values for ranking score
+const TIER_PTS = {HT1:100,HT2:80,HT3:60,HT4:45,HT5:35,HT6:25,LT1:18,LT2:12,LT3:8,LT4:5,LT5:3,LT6:1};
+
+let curGM = 'overall', curRegion = 'AS';
+
+// ══════════════════════════════════════════════
+//  HELPERS
+// ══════════════════════════════════════════════
+const headURL = n => `https://mc-heads.net/avatar/${encodeURIComponent(n)}/40`;
+const skinURL = n => `https://mc-heads.net/skin/${encodeURIComponent(n)}`;
+const icon    = gm => `icons/${gm}.svg`;
+
+function getScore(p){
+  return Object.values(p.tiers||{}).reduce((s,t)=>s+(TIER_PTS[t]||0),0);
+}
+function getBest(p){
+  for(const t of TIER_ORDER) if(Object.values(p.tiers||{}).includes(t)) return t;
+  return null;
+}
+function getTier(p,gm){
+  if(gm==='overall') return getBest(p);
+  return (p.tiers||{})[gm]||null;
+}
+function getRankTitle(score){
+  for(const r of RANK_TITLES) if(score>=r.min) return r;
+  return RANK_TITLES[RANK_TITLES.length-1];
+}
+function getFilteredSorted(){
+  return Object.values(SPARK_DATA)
+    .filter(p => {
+      const hasTier = curGM==='overall'
+        ? Object.keys(p.tiers||{}).length>0
+        : !!(p.tiers||{})[curGM];
+      const regionOk = curRegion==='ALL' || p.region===curRegion;
+      return hasTier && regionOk;
+    })
+    .sort((a,b) => {
+      if(curGM==='overall') return getScore(b)-getScore(a);
+      const ta=TIER_ORDER.indexOf(getTier(a,curGM));
+      const tb=TIER_ORDER.indexOf(getTier(b,curGM));
+      return ta-tb;
+    });
+}
+
+// ══════════════════════════════════════════════
+//  RENDER
+// ══════════════════════════════════════════════
+function render(){
+  const list    = document.getElementById('playersList');
+  const players = getFilteredSorted();
+  document.getElementById('playerCount').textContent = players.length+' player'+(players.length!==1?'s':'');
+  list.innerHTML='';
+
+  if(!players.length){
+    list.innerHTML='<div class="empty-state">No players ranked yet in this category.</div>';
+    return;
+  }
+
+  players.forEach((p,i)=>{
+    const rank  = i+1;
+    const score = getScore(p);
+    const rt    = getRankTitle(score);
+    const best  = getBest(p);
+    const bestColor = best?TIER_COLOR[best]:'#94a3b8';
+
+    const row = document.createElement('div');
+    row.className='player-row';
+    row.onclick=()=>openModal(p);
+
+    // ── rank cell ──
+    const rankEl = document.createElement('div');
+    rankEl.className='p-rank'+(rank===1?' gold':rank===2?' silver':rank===3?' bronze':'');
+    rankEl.textContent=rank+'.';
+
+    // ── info cell ──
+    const info = document.createElement('div');
+    info.className='p-info';
+    info.innerHTML=`
+      <img class="p-head" src="${headURL(p.name)}" alt="${p.name}" onerror="this.style.opacity='.3'"/>
+      <div>
+        <div class="p-name">${p.name}</div>
+        <div class="p-title">
+          <span class="p-title-dot" style="background:${rt.color}"></span>
+          <span style="color:${rt.color}">${rt.title}</span>
+          <span style="color:var(--muted)">(${score} points)</span>
+        </div>
+      </div>`;
+
+    // ── region cell ──
+    const regionEl = document.createElement('div');
+    regionEl.innerHTML=`<div class="p-region">${p.region}</div>`;
+
+    // ── tiers cell ──
+    const tiersEl = document.createElement('div');
+    tiersEl.className='p-tiers';
+
+    if(curGM==='overall'){
+      // icon on top, tier badge below — exactly like MCTiers
+      GM_ALL.forEach(gm=>{
+        const t=(p.tiers||{})[gm];
+        const wrap=document.createElement('div');
+        wrap.className='tiw';
+        if(t){
+          wrap.innerHTML=`
+            <img src="${icon(gm)}" alt="${GM_LABELS[gm]}" title="${GM_LABELS[gm]}"/>
+            <span class="tib bg-${t} c-${t}">${t}</span>`;
+        } else {
+          wrap.innerHTML=`
+            <img src="${icon(gm)}" alt="${GM_LABELS[gm]}" class="dim"/>
+            <span class="tib empty">-</span>`;
+        }
+        tiersEl.appendChild(wrap);
+      });
+    } else {
+      // single gamemode view — one icon + big badge
+      const t=getTier(p,curGM);
+      const wrap=document.createElement('div');
+      wrap.className='tiw';
+      if(t){
+        wrap.innerHTML=`
+          <img src="${icon(curGM)}" alt="${GM_LABELS[curGM]}"/>
+          <span class="tib bg-${t} c-${t}" style="font-size:.7rem;padding:2px 6px">${t}</span>`;
+      }
+      tiersEl.appendChild(wrap);
+    }
+
+    row.appendChild(rankEl);
+    row.appendChild(info);
+    row.appendChild(regionEl);
+    row.appendChild(tiersEl);
+    list.appendChild(row);
+  });
+}
+
+// ══════════════════════════════════════════════
+//  MODAL + 3D SKIN
+// ══════════════════════════════════════════════
+let sv3d=false;
+function loadSV3D(cb){
+  if(window.skinview3d){cb();return;}
+  const s=document.createElement('script');
+  s.src='https://cdn.jsdelivr.net/npm/skinview3d@2.2.1/bundles/skinview3d.bundle.js';
+  s.onload=()=>{sv3d=true;cb()};
+  s.onerror=()=>cb();
+  document.head.appendChild(s);
+}
+function makeSkin(wrap,name,w,h,opts={}){
+  wrap.innerHTML='';
+  if(!window.skinview3d){
+    const i=document.createElement('img');i.src=headURL(name);i.className='fb';wrap.appendChild(i);return;
+  }
+  const c=document.createElement('canvas');
+  c.width=w*2;c.height=h*2;c.style.width=w+'px';c.style.height=h+'px';
+  wrap.appendChild(c);
+  const v=new skinview3d.SkinViewer({canvas:c,width:w*2,height:h*2,skin:skinURL(name)});
+  v.renderer.setClearColor(0x000000,0);
+  v.camera.position.z=opts.zoom||55;v.camera.position.y=opts.camY||8;
+  if(opts.walk){v.animation=new skinview3d.WalkingAnimation();v.animation.speed=0.5;}
+  v.autoRotate=!!opts.rotate;v.autoRotateSpeed=0.6;
+}
+
+function openModal(p){
+  const best=getBest(p);
+  const color=best?TIER_COLOR[best]:'#f5a623';
+  const score=getScore(p);
+  const rt=getRankTitle(score);
+  document.getElementById('modalBar').style.background=color;
+  document.getElementById('modalName').textContent=p.name;
+  document.getElementById('modalSub').innerHTML=`<span style="color:${rt.color}">${rt.title}</span> <span style="color:var(--muted)">(${score} pts)</span>`;
+  document.getElementById('modalRegion').textContent=p.region;
+
+  const grid=document.getElementById('modalTiersGrid');
+  grid.innerHTML='';
+  GM_ALL.forEach(gm=>{
+    const t=(p.tiers||{})[gm];
+    if(!t) return;
+    const row=document.createElement('div');
+    row.className='modal-tier-row';
+    row.innerHTML=`
+      <img src="${icon(gm)}" alt="${gm}" onerror="this.style.display='none'"/>
+      <span class="modal-tier-gm">${GM_LABELS[gm]}</span>
+      <span class="modal-tier-badge bg-${t} c-${t}">${t}</span>`;
+    grid.appendChild(row);
+  });
+
+  document.getElementById('modalFooter').textContent=
+    `Ranked by ${p.rankedBy||'Staff'} · ${p.rankedAt||''}`;
+
+  const sw=document.getElementById('modalSkin');
+  loadSV3D(()=>makeSkin(sw,p.name,80,110,{zoom:44,camY:8,walk:true,rotate:true}));
+  document.getElementById('overlay').classList.add('open');
+}
+function closeModal(){
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('modalSkin').innerHTML='';
+}
+
+// ══════════════════════════════════════════════
+//  TABS + REGION
+// ══════════════════════════════════════════════
+document.querySelectorAll('.gm-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.gm-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    curGM=tab.dataset.gm;
+    render();
+  });
+});
+function switchRegion(r,btn){
+  curRegion=r;
+  document.querySelectorAll('.rbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+// ══════════════════════════════════════════════
+//  SEARCH
+// ══════════════════════════════════════════════
+const si=document.getElementById('searchInput');
+const sd=document.getElementById('searchDrop');
+si.addEventListener('input',function(){
+  const q=this.value.trim().toLowerCase();
+  sd.innerHTML='';
+  if(!q){sd.classList.remove('open');return;}
+  const hits=Object.values(SPARK_DATA).filter(p=>p.name.toLowerCase().includes(q)).slice(0,6);
+  if(!hits.length){
+    sd.innerHTML='<div style="padding:10px 14px;font-size:.78rem;color:var(--muted)">No players found</div>';
+  } else {
+    hits.forEach(p=>{
+      const best=getBest(p);const color=best?TIER_COLOR[best]:'var(--muted)';
+      const row=document.createElement('div');row.className='sd-row';
+      row.innerHTML=`<img src="${headURL(p.name)}" alt="${p.name}" onerror="this.style.opacity='.2'"/>
+        <div><div class="sd-name">${p.name}</div>
+        <div class="sd-sub" style="color:${color}">${best||'Unranked'} · ${p.region}</div></div>`;
+      row.onclick=()=>{sd.classList.remove('open');si.value='';openModal(p);};
+      sd.appendChild(row);
+    });
+  }
+  sd.classList.add('open');
+});
+document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))sd.classList.remove('open');});
+
+// ══════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════
+render();
+</script>
+</body>
+</html>

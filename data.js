@@ -1,18 +1,12 @@
-// SparkTiers - Player Data
-// Updated automatically by the Discord bot.
-// Format: { "username": { name, tiers: { gamemode: "HT1" }, region, rankedBy, rankedAt } }
-
+// SparkTiers player data — written by the bot, read by the website
 const SPARK_DATA = {
-  "Lostgalaxy6": {
-    "name": "Lostgalaxy6",
+  "whynotking": {
+    "name": "WhyNotKing",
     "region": "NA",
     "tiers": {
-      "mace": "LT4",
-      "smp": "LT4",
-      "lifesteal": "HT5",
-      "pot": "LT6"
+      "nethop": "LT4"
     },
-    "rankedBy": "SparkTiers Staff",
-    "rankedAt": "2026-09-26"
+    "rankedBy": "lostgalax_y",
+    "rankedAt": "2026-09-27"
   }
 };

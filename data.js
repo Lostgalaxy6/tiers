@@ -37,5 +37,14 @@ const SPARK_DATA = {
     },
     "rankedBy": "not_ry1",
     "rankedAt": "2026-09-27"
+  },
+  "itzdraco": {
+    "name": "ItzDraco",
+    "region": "AS",
+    "tiers": {
+      "mace": "LT4"
+    },
+    "rankedBy": "lostgalax_y",
+    "rankedAt": "2026-09-27"
   }
 };

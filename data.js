@@ -17,5 +17,14 @@ const SPARK_DATA = {
     },
     "rankedBy": "lostgalax_y",
     "rankedAt": "2026-09-27"
+  },
+  "not_ry": {
+    "name": "Not_RY",
+    "region": "AS",
+    "tiers": {
+      "nethop": "LT3"
+    },
+    "rankedBy": "not_ry1",
+    "rankedAt": "2026-09-27"
   }
 };

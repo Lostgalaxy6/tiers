@@ -281,7 +281,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- ══ TOP NAV ══ -->
 <nav class="topnav">
-  <div class="nav-logo">⚡Spark<span>Tiers</span></div>
+  <div class="nav-logo">⚡SPARK<span>TIERS</span></div>
   <a class="nav-link" href="#">🏠 Home</a>
   <a class="nav-link" href="#">🏆 Rankings</a>
   <a class="nav-link" href="https://discord.gg/REPLACE_ME" target="_blank">💬 Discord</a>
@@ -327,6 +327,12 @@ a{color:inherit;text-decoration:none}
   <div class="gm-tab" data-gm="mace">
     <img src="icons/mace.svg" alt=""/><span>Mace</span>
   </div>
+  <div class="gm-tab" data-gm="dsmp">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgBAMAAAB54XoeAAAAHlBMVEUAAAD39Pfh1+G6m7qjgaKOZ414WXhlSGReLlw6FDo7QZHlAAAAAXRSTlMAQObYZgAAALhJREFUeNrt2DENBCEQheGzcBawsBawgAUsYAEL6/bycsm8QJZ2m/n/Cor5uingQ0RE9GKXAgQEPA8XBQgI+AgW9Y0uNdYAAXODVjewRV0NNRUgYG6wRF69GjU11K0AATOCVm1N1ZXBrqYCBMwIjrWumqrK123/AAFTgLa24Rq1ta4AAdOCXXnEVzciQMCMoFXTPh3/CQABM4JTWfWbx8yTBQiYB3S3mmtHCxAwJWj1lC1AQEAi+vcDvaVx/9yMcacAAAAASUVORK5CYII=" alt="" style="image-rendering:pixelated"/><span>DSMP</span>
+  </div>
+  <div class="gm-tab" data-gm="spear">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgBAMAAAB54XoeAAAAKlBMVEUAAABKKUBdVl2Ge4YjEBJYTlY8MjJLP0YxKSovISJgNDJzRUNDQEM7OTsg8hdHAAAAAXRSTlMAQObYZgAAAKNJREFUeAFioBgIAtqnkzIEoQAKo12oQAUqUMEKVKACFaxgBSvYxe86y7xyPP/+nTc/BwQCR5kilalKQCDwganT3dokIPBvwR7TpCLVacwCAv8bbNLYh2sTEAh8UOs0bQGBwC6Vqb0FBAL71jZVt3rWf4NAYJd2qTe4SkAgcNwaDwj8VdBugcB3W0CgTwIE+iT7NGoBgcAuHdK0BQQCV1hAIPAIYo86YrqMOkQAAAAASUVORK5CYII=" alt="" style="image-rendering:pixelated"/><span>Spear</span>
+  </div>
 </div>
 
 <!-- ══ SUBBAR ══ -->
@@ -341,7 +347,6 @@ a{color:inherit;text-decoration:none}
   <div class="th">#</div>
   <div class="th">PLAYER</div>
   <div class="th">REGION</div>
-  <!-- gamemode icons as column headers, matching each tier column below -->
   <div style="display:flex;gap:3px;align-items:center" id="tiersHeader">
     <div class="tiw" style="width:36px"><img src="icons/vanilla.svg" style="width:18px;height:18px;opacity:.4"/></div>
     <div class="tiw" style="width:36px"><img src="icons/uhc.svg"     style="width:18px;height:18px;opacity:.4"/></div>
@@ -351,6 +356,8 @@ a{color:inherit;text-decoration:none}
     <div class="tiw" style="width:36px"><img src="icons/sword.svg"   style="width:18px;height:18px;opacity:.4"/></div>
     <div class="tiw" style="width:36px"><img src="icons/axe.svg"     style="width:18px;height:18px;opacity:.4"/></div>
     <div class="tiw" style="width:36px"><img src="icons/mace.svg"    style="width:18px;height:18px;opacity:.4"/></div>
+    <div class="tiw" style="width:36px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgBAMAAAB54XoeAAAAHlBMVEUAAAD39Pfh1+G6m7qjgaKOZ414WXhlSGReLlw6FDo7QZHlAAAAAXRSTlMAQObYZgAAALhJREFUeNrt2DENBCEQheGzcBawsBawgAUsYAEL6/bycsm8QJZ2m/n/Cor5uingQ0RE9GKXAgQEPA8XBQgI+AgW9Y0uNdYAAXODVjewRV0NNRUgYG6wRF69GjU11K0AATOCVm1N1ZXBrqYCBMwIjrWumqrK123/AAFTgLa24Rq1ta4AAdOCXXnEVzciQMCMoFXTPh3/CQABM4JTWfWbx8yTBQiYB3S3mmtHCxAwJWj1lC1AQEAi+vcDvaVx/9yMcacAAAAASUVORK5CYII=" style="width:18px;height:18px;opacity:.4;image-rendering:pixelated"/></div>
+    <div class="tiw" style="width:36px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgBAMAAAB54XoeAAAAKlBMVEUAAABKKUBdVl2Ge4YjEBJYTlY8MjJLP0YxKSovISJgNDJzRUNDQEM7OTsg8hdHAAAAAXRSTlMAQObYZgAAAKNJREFUeAFioBgIAtqnkzIEoQAKo12oQAUqUMEKVKACFaxgBSvYxe86y7xyPP/+nTc/BwQCR5kilalKQCDwganT3dokIPBvwR7TpCLVacwCAv8bbNLYh2sTEAh8UOs0bQGBwC6Vqb0FBAL71jZVt3rWf4NAYJd2qTe4SkAgcNwaDwj8VdBugcB3W0CgTwIE+iT7NGoBgcAuHdK0BQQCV1hAIPAIYo86YrqMOkQAAAAASUVORK5CYII=" style="width:18px;height:18px;opacity:.4;image-rendering:pixelated"/></div>
   </div>
 </div>
 
@@ -378,12 +385,29 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<script src="tiers.js"></script>
 <script src="data.js"></script>
+<script src="points.js"></script>
 <script>
 // ══════════════════════════════════════════════
-//  CONFIG (tier constants now live in tiers.js)
+//  CONFIG (tier constants loaded from points.js)
 // ══════════════════════════════════════════════
+const GM_ALL    = ['vanilla','uhc','pot','nethop','smp','sword','axe','mace','dsmp','spear'];
+const GM_LABELS = {overall:'Overall',vanilla:'Vanilla',uhc:'UHC',pot:'Pot',nethop:'NethOP',smp:'SMP',sword:'Sword',axe:'Axe',mace:'Mace',dsmp:'DSMP',spear:'Spear'};
+const RANK_TITLES = [
+  {tiers:['HT1'],             title:'Combat Legend',      color:'#ff3333'},
+  {tiers:['HT2'],             title:'Combat Grandmaster', color:'#ff6600'},
+  {tiers:['HT3'],             title:'Combat Master',      color:'#f5a623'},
+  {tiers:['HT4','HT5','HT6'],title:'Combat Ace',          color:'#a3e635'},
+  {tiers:['LT1','LT2'],       title:'Combat Expert',      color:'#818cf8'},
+  {tiers:['LT3','LT4'],       title:'Combat Veteran',     color:'#94a3b8'},
+  {tiers:['LT5','LT6'],       title:'Combat Rookie',      color:'#64748b'},
+];
+
+const CUSTOM_ICONS = {
+  dsmp:  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgBAMAAAB54XoeAAAAHlBMVEUAAAD39Pfh1+G6m7qjgaKOZ414WXhlSGReLlw6FDo7QZHlAAAAAXRSTlMAQObYZgAAALhJREFUeNrt2DENBCEQheGzcBawsBawgAUsYAEL6/bycsm8QJZ2m/n/Cor5uingQ0RE9GKXAgQEPA8XBQgI+AgW9Y0uNdYAAXODVjewRV0NNRUgYG6wRF69GjU11K0AATOCVm1N1ZXBrqYCBMwIjrWumqrK123/AAFTgLa24Rq1ta4AAdOCXXnEVzciQMCMoFXTPh3/CQABM4JTWfWbx8yTBQiYB3S3mmtHCxAwJWj1lC1AQEAi+vcDvaVx/9yMcacAAAAASUVORK5CYII=',
+  spear: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgBAMAAAB54XoeAAAAKlBMVEUAAABKKUBdVl2Ge4YjEBJYTlY8MjJLP0YxKSovISJgNDJzRUNDQEM7OTsg8hdHAAAAAXRSTlMAQObYZgAAAKNJREFUeAFioBgIAtqnkzIEoQAKo12oQAUqUMEKVKACFaxgBSvYxe86y7xyPP/+nTc/BwQCR5kilalKQCDwganT3dokIPBvwR7TpCLVacwCAv8bbNLYh2sTEAh8UOs0bQGBwC6Vqb0FBAL71jZVt3rWf4NAYJd2qTe4SkAgcNwaDwj8VdBugcB3W0CgTwIE+iT7NGoBgcAuHdK0BQQCV1hAIPAIYo86YrqMOkQAAAAASUVORK5CYII='
+};
+const icon = gm => CUSTOM_ICONS[gm] || `icons/${gm}.svg`;
 
 let curGM = 'overall', curRegion = 'AS';
 
@@ -392,11 +416,7 @@ let curGM = 'overall', curRegion = 'AS';
 // ══════════════════════════════════════════════
 const headURL = n => `https://mc-heads.net/avatar/${encodeURIComponent(n)}/40`;
 const skinURL = n => `https://mc-heads.net/skin/${encodeURIComponent(n)}`;
-const icon    = gm => `icons/${gm}.svg`;
 
-function getScore(p){
-  return Object.values(p.tiers||{}).reduce((s,t)=>s+(TIER_PTS[t]||0),0);
-}
 function getBest(p){
   for(const t of TIER_ORDER) if(Object.values(p.tiers||{}).includes(t)) return t;
   return null;
@@ -405,24 +425,29 @@ function getTier(p,gm){
   if(gm==='overall') return getBest(p);
   return (p.tiers||{})[gm]||null;
 }
-function getRankTitle(score){
-  for(const r of RANK_TITLES) if(score>=r.min) return r;
-  return RANK_TITLES[RANK_TITLES.length-1];
+function getRankTitle(best){
+  if(!best) return {title:'Unranked',color:'#55556a'};
+  for(const r of RANK_TITLES) if(r.tiers.includes(best)) return r;
+  return {title:'Combat Rookie',color:'#64748b'};
 }
 function getFilteredSorted(){
   return Object.values(SPARK_DATA)
-    .filter(p => {
+    .filter(p=>{
       const hasTier = curGM==='overall'
         ? Object.keys(p.tiers||{}).length>0
         : !!(p.tiers||{})[curGM];
-      const regionOk = curRegion==='ALL' || p.region===curRegion;
+      const regionOk = curRegion==='ALL'||p.region===curRegion;
       return hasTier && regionOk;
     })
-    .sort((a,b) => {
-      if(curGM==='overall') return getScore(b)-getScore(a);
-      const ta=TIER_ORDER.indexOf(getTier(a,curGM));
-      const tb=TIER_ORDER.indexOf(getTier(b,curGM));
-      return ta-tb;
+    .sort((a,b)=>{
+      if(curGM==='overall'){
+        const ai = TIER_ORDER.indexOf(getBest(a));
+        const bi = TIER_ORDER.indexOf(getBest(b));
+        return (ai===-1?99:ai)-(bi===-1?99:bi);
+      }
+      const ai = TIER_ORDER.indexOf(getTier(a,curGM));
+      const bi = TIER_ORDER.indexOf(getTier(b,curGM));
+      return (ai===-1?99:ai)-(bi===-1?99:bi);
     });
 }
 
@@ -442,9 +467,9 @@ function render(){
 
   players.forEach((p,i)=>{
     const rank  = i+1;
-    const score = getScore(p);
-    const rt    = getRankTitle(score);
     const best  = getBest(p);
+    const rt    = getRankTitle(best);
+    const score = getScore(p);
     const bestColor = best?TIER_COLOR[best]:'#94a3b8';
 
     const row = document.createElement('div');
@@ -545,7 +570,7 @@ function openModal(p){
   const best=getBest(p);
   const color=best?TIER_COLOR[best]:'#f5a623';
   const score=getScore(p);
-  const rt=getRankTitle(score);
+  const rt=getRankTitle(best);
   document.getElementById('modalBar').style.background=color;
   document.getElementById('modalName').textContent=p.name;
   document.getElementById('modalSub').innerHTML=`<span style="color:${rt.color}">${rt.title}</span> <span style="color:var(--muted)">(${score} pts)</span>`;
@@ -569,7 +594,6 @@ function openModal(p){
     `Ranked by ${p.rankedBy||'Staff'} · ${p.rankedAt||''}`;
 
   const sw=document.getElementById('modalSkin');
-  // use skinName for the 3D skin viewer
   loadSV3D(()=>makeSkin(sw,p.skinName||p.name,80,110,{zoom:44,camY:8,walk:true,rotate:true}));
   document.getElementById('overlay').classList.add('open');
 }

@@ -64,5 +64,14 @@ const SPARK_DATA = {
     },
     "rankedBy": "not_ry1",
     "rankedAt": "2026-09-28"
+  },
+  "kiyuzen": {
+    "name": "Kiyuzen",
+    "region": "AS",
+    "tiers": {
+      "sword": "LT4"
+    },
+    "rankedBy": "1_truthoflife_1",
+    "rankedAt": "2026-09-28"
   }
 };

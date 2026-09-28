@@ -55,5 +55,14 @@ const SPARK_DATA = {
     },
     "rankedBy": "lostgalax_y",
     "rankedAt": "2026-09-28"
+  },
+  "voidreign": {
+    "name": "VOIDREIGN",
+    "region": "AS",
+    "tiers": {
+      "nethop": "LT4"
+    },
+    "rankedBy": "not_ry1",
+    "rankedAt": "2026-09-28"
   }
 };

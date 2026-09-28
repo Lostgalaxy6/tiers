@@ -16,12 +16,12 @@ const TIER_PTS = {
   HT4:  45,
   HT5:  35,
   HT6:  25,
-  LT1:  18,
-  LT2:  12,
-  LT3:   8,
-  LT4:   5,
-  LT5:   3,
-  LT6:   1,
+  LT1:  87,
+  LT2:  70,
+  LT3:   53,
+  LT4:   42,
+  LT5:   30,
+  LT6:   13,
 };
 
 // ── Hex color for each tier (used in badges and highlights) ──

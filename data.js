@@ -88,7 +88,8 @@ const SPARK_DATA = {
     "name": "yoichi",
     "region": "AS",
     "tiers": {
-      "nethop": "HT5"
+      "nethop": "HT5",
+      "sword": "HT5"
     },
     "rankedBy": "1_truthoflife_1",
     "rankedAt": "2026-09-29"

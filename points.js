@@ -1,7 +1,9 @@
-// SparkTiers — Points Configuration
-// Edit these values to change how players are ranked.
-// Higher = better. These determine the leaderboard order.
+// SparkTiers — Points & Titles Configuration
+// Edit these values to your liking.
+// ─────────────────────────────────────────
 
+// How many points each tier is worth.
+// These determine the overall leaderboard order.
 const TIER_PTS = {
   HT1: 1000,
   HT2: 800,
@@ -23,13 +25,11 @@ const TIER_PTS = {
 // "color" — the color of the title text (hex).
 // Order matters — first match wins.
 const RANK_TITLES = [
-  { tiers: ['HT1'],             title: 'Combat GrandMaster',      color: '#ff3333' },
-  { tiers: ['HT2'],             title: 'Combat Master', color: '#ff6600' },
-  { tiers: ['HT3'],             title: 'Combat Ace',      color: '#f5a623' },
-  { tiers: ['HT4'],             title: 'Combat Expert',      color: '#a3e635' },
-  { tiers: ['LT1', 'LT2'],     title: 'Combat Master',      color: '#ff6600' },
-  { tiers: ['LT3'],            title: 'Combat Ace',     color: '#f5a623' },
-  { tiers: ['LT4'],            title: 'Combat Trainee', color: '#895129' },
-  { tiers: ['LT5', 'HT5', 'HT6', 'LT6'],     title: 'Combat Noob',      color: '#64748b' },
+  { tiers: ['HT1'],               title: 'Combat Legend',      color: '#ff3333' },
+  { tiers: ['HT2'],               title: 'Combat Grandmaster', color: '#ff6600' },
+  { tiers: ['HT3'],               title: 'Combat Master',      color: '#f5a623' },
+  { tiers: ['HT4', 'HT5', 'HT6'], title: 'Combat Ace',         color: '#a3e635' },
+  { tiers: ['LT1', 'LT2'],         title: 'Combat Expert',      color: '#818cf8' },
+  { tiers: ['LT3', 'LT4'],         title: 'Combat Veteran',     color: '#94a3b8' },
+  { tiers: ['LT5', 'LT6'],         title: 'Combat Rookie',      color: '#64748b' },
 ];
- 

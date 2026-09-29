@@ -104,5 +104,14 @@ const SPARK_DATA = {
     },
     "rankedBy": "lostgalax_y",
     "rankedAt": "2026-09-29"
+  },
+  "lostgalaxy": {
+    "name": "Lostgalaxy",
+    "region": "AS",
+    "tiers": {
+      "dsmp": "LT6"
+    },
+    "rankedBy": "lostgalax_y",
+    "rankedAt": "2026-09-29"
   }
 };

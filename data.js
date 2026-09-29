@@ -74,5 +74,14 @@ const SPARK_DATA = {
     },
     "rankedBy": "1_truthoflife_1",
     "rankedAt": "2026-09-28"
+  },
+  "ascensionspider": {
+    "name": "Ascensionspider",
+    "region": "AS",
+    "tiers": {
+      "mace": "HT5"
+    },
+    "rankedBy": "1_truthoflife_1",
+    "rankedAt": "2026-09-29"
   }
 };

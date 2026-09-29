@@ -58,7 +58,7 @@ const SPARK_DATA = {
     "rankedAt": "2026-09-28"
   },
   "voidreign": {
-    "name": "VOIDREIGN",
+    "name": "VOIDREIGN_XD",
     "region": "AS",
     "tiers": {
       "nethop": "LT4"

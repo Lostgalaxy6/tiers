@@ -28,7 +28,7 @@ const RANK_TITLES = [
   { tiers: ['HT3'],             title: 'Combat Ace',      color: '#f5a623' },
   { tiers: ['HT4'],             title: 'Combat Expert',      color: '#a3e635' },
   { tiers: ['LT1', 'LT2'],     title: 'Combat Master',      color: '#ff6600' },
-  { tiers: ['LT3'],            title: 'Combat Ace',     color: '##f5a623' },
+  { tiers: ['LT3'],            title: 'Combat Ace',     color: '#f5a623' },
   { tiers: ['LT4'],            title: 'Combat Trainee', color: '#895129' },
   { tiers: ['LT5', 'HT5', 'HT6', 'LT6'],     title: 'Combat Noob',      color: '#64748b' },
 ];

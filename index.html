@@ -195,23 +195,25 @@ a{color:inherit;text-decoration:none}
 }
 
 /* ── TIER COLORS ── */
-.c-HT1{color:#ff3333}.c-HT2{color:#ff6600}.c-HT3{color:#f5a623}
-.c-HT4{color:#a3e635}.c-HT5{color:#22d3ee}.c-HT6{color:#38bdf8}
-.c-LT1{color:#818cf8}.c-LT2{color:#a78bfa}.c-LT3{color:#94a3b8}
-.c-LT4{color:#64748b}.c-LT5{color:#475569}.c-LT6{color:#334155}
+.c-HT1{color:#ff3333}.c-LT1{color:#ff6600}
+.c-HT2{color:#f5a623}.c-LT2{color:#e8c840}
+.c-HT3{color:#a3e635}.c-LT3{color:#6dbd45}
+.c-HT4{color:#22d3ee}.c-LT4{color:#38bdf8}
+.c-HT5{color:#818cf8}.c-LT5{color:#a78bfa}
+.c-HT6{color:#94a3b8}.c-LT6{color:#64748b}
 
 .bg-HT1{background:rgba(255,51,51,.18);border:1px solid rgba(255,51,51,.35)}
-.bg-HT2{background:rgba(255,102,0,.18);border:1px solid rgba(255,102,0,.35)}
-.bg-HT3{background:rgba(245,166,35,.18);border:1px solid rgba(245,166,35,.35)}
-.bg-HT4{background:rgba(163,230,53,.18);border:1px solid rgba(163,230,53,.35)}
-.bg-HT5{background:rgba(34,211,238,.18);border:1px solid rgba(34,211,238,.35)}
-.bg-HT6{background:rgba(56,189,248,.18);border:1px solid rgba(56,189,248,.35)}
-.bg-LT1{background:rgba(129,140,248,.18);border:1px solid rgba(129,140,248,.35)}
-.bg-LT2{background:rgba(167,139,250,.18);border:1px solid rgba(167,139,250,.35)}
-.bg-LT3{background:rgba(148,163,184,.18);border:1px solid rgba(148,163,184,.35)}
-.bg-LT4{background:rgba(100,116,139,.18);border:1px solid rgba(100,116,139,.35)}
-.bg-LT5{background:rgba(71,85,105,.18);border:1px solid rgba(71,85,105,.35)}
-.bg-LT6{background:rgba(51,65,85,.25);border:1px solid rgba(51,65,85,.5)}
+.bg-LT1{background:rgba(255,102,0,.18);border:1px solid rgba(255,102,0,.35)}
+.bg-HT2{background:rgba(245,166,35,.18);border:1px solid rgba(245,166,35,.35)}
+.bg-LT2{background:rgba(232,200,64,.18);border:1px solid rgba(232,200,64,.35)}
+.bg-HT3{background:rgba(163,230,53,.18);border:1px solid rgba(163,230,53,.35)}
+.bg-LT3{background:rgba(109,189,69,.18);border:1px solid rgba(109,189,69,.35)}
+.bg-HT4{background:rgba(34,211,238,.18);border:1px solid rgba(34,211,238,.35)}
+.bg-LT4{background:rgba(56,189,248,.18);border:1px solid rgba(56,189,248,.35)}
+.bg-HT5{background:rgba(129,140,248,.18);border:1px solid rgba(129,140,248,.35)}
+.bg-LT5{background:rgba(167,139,250,.18);border:1px solid rgba(167,139,250,.35)}
+.bg-HT6{background:rgba(148,163,184,.18);border:1px solid rgba(148,163,184,.35)}
+.bg-LT6{background:rgba(100,116,139,.18);border:1px solid rgba(100,116,139,.35)}
 
 /* ── MODAL ── */
 .overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);align-items:center;justify-content:center}
@@ -394,25 +396,17 @@ a{color:inherit;text-decoration:none}
 // ══════════════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════════════
-const TIER_ORDER = ['HT1','HT2','HT3','HT4','HT5','HT6','LT1','LT2','LT3','LT4','LT5','LT6'];
+const TIER_ORDER = ['HT1','LT1','HT2','LT2','HT3','LT3','HT4','LT4','HT5','LT5','HT6','LT6'];
 const TIER_COLOR = {
-  HT1:'#ff3333',HT2:'#ff6600',HT3:'#f5a623',
-  HT4:'#a3e635',HT5:'#22d3ee',HT6:'#38bdf8',
-  LT1:'#818cf8',LT2:'#a78bfa',LT3:'#94a3b8',
-  LT4:'#64748b',LT5:'#475569',LT6:'#334155'
+  HT1:'#ff3333',LT1:'#ff6600',
+  HT2:'#f5a623',LT2:'#e8c840',
+  HT3:'#a3e635',LT3:'#6dbd45',
+  HT4:'#22d3ee',LT4:'#38bdf8',
+  HT5:'#818cf8',LT5:'#a78bfa',
+  HT6:'#94a3b8',LT6:'#64748b'
 };
 const GM_ALL    = ['vanilla','uhc','pot','nethop','smp','sword','axe','mace','dsmp','spear'];
-const GM_LABELS = {overall:'Overall',vanilla:'Vanilla',uhc:'UHC',pot:'Pot',nethop:'NethOP',smp:'SMP',sword:'Sword',axe:'Axe',mace:'Mace',dsmp:'DSMP',spear:'Spear'};
-const RANK_TITLES = [
-  {tiers:['HT1'],             title:'Combat Legend',     color:'#ff3333'},
-  {tiers:['HT2'],             title:'Combat Grandmaster',color:'#ff6600'},
-  {tiers:['HT3'],             title:'Combat Master',     color:'#f5a623'},
-  {tiers:['HT4','HT5','HT6'],title:'Combat Ace',         color:'#a3e635'},
-  {tiers:['LT1','LT2'],       title:'Combat Expert',     color:'#818cf8'},
-  {tiers:['LT3','LT4'],       title:'Combat Veteran',    color:'#94a3b8'},
-  {tiers:['LT5','LT6'],       title:'Combat Rookie',     color:'#64748b'},
-];
-
+const GM_LABELS = {overall:'Overall',vanilla:'Crystal',uhc:'UHC',pot:'Pot',nethop:'NethOP',smp:'SMP',sword:'Sword',axe:'Axe',mace:'Mace',dsmp:'DSMP',spear:'Spear'};
 let curGM = 'overall', curRegion = 'AS';
 
 // ══════════════════════════════════════════════
@@ -438,10 +432,17 @@ function getTier(p,gm){
   if(gm==='overall') return getBest(p);
   return (p.tiers||{})[gm]||null;
 }
-function getRankTitle(best){
+function getRankTitle(best, p){
   if(!best) return {title:'Unranked',color:'#55556a'};
-  for(const r of RANK_TITLES) if(r.tiers.includes(best)) return r;
-  return {title:'Combat Rookie',color:'#64748b'};
+  for(const r of RANK_TITLES){
+    if(!r.tiers.includes(best)) continue;
+    if(r.ht1Required){
+      const ht1count = Object.values(p.tiers||{}).filter(t=>t==='HT1').length;
+      if(ht1count < r.ht1Required) continue;
+    }
+    return r;
+  }
+  return {title:'Combat Noob',color:'#94a3b8'};
 }
 function getFilteredSorted(){
   return Object.values(SPARK_DATA)
@@ -478,7 +479,7 @@ function render(){
     const rank  = i+1;
     const best  = getBest(p);
     const score = Object.values(p.tiers||{}).reduce((s,t)=>s+(TIER_PTS[t]||0),0);
-    const rt    = getRankTitle(best);
+    const rt    = getRankTitle(best, p);
 
     const row = document.createElement('div');
     row.className='player-row';
@@ -578,7 +579,7 @@ function openModal(p){
   const best=getBest(p);
   const color=best?TIER_COLOR[best]:'#f5a623';
   const score=getScore(p);
-  const rt=getRankTitle(best);
+  const rt=getRankTitle(best,p);
   document.getElementById('modalBar').style.background=color;
   document.getElementById('modalName').textContent=p.name;
   document.getElementById('modalSub').innerHTML=`<span style="color:${rt.color}">${rt.title}</span> <span style="color:var(--muted)">(${score} pts)</span>`;

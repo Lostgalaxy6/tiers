@@ -5,14 +5,14 @@ const SPARK_DATA = {
     "region": "AS",
     "tiers": {
       "nethop": "LT4",
-      "sword": "LT4"
+      "sword": "LT4",
+      "dsmp": "HT4"
     },
-    "rankedBy": "1_truthoflife_1",
-    "rankedAt": "2026-09-27"
+    "rankedBy": "lostgalax_y",
+    "rankedAt": "2026-09-29"
   },
   "lostgalaxy67": {
     "name": "Lostgalaxy67",
-    "skinName": "Lostgalaxy6",
     "region": "AS",
     "tiers": {
       "mace": "HT4"
@@ -47,5 +47,32 @@ const SPARK_DATA = {
     },
     "rankedBy": "lostgalax_y",
     "rankedAt": "2026-09-27"
+  },
+  "aarav": {
+    "name": "aarav",
+    "region": "AS",
+    "tiers": {
+      "dsmp": "LT6"
+    },
+    "rankedBy": "lostgalax_y",
+    "rankedAt": "2026-09-28"
+  },
+  "voidreign": {
+    "name": "VOIDREIGN",
+    "region": "AS",
+    "tiers": {
+      "nethop": "LT4"
+    },
+    "rankedBy": "not_ry1",
+    "rankedAt": "2026-09-28"
+  },
+  "kiyuzen": {
+    "name": "Kiyuzen",
+    "region": "AS",
+    "tiers": {
+      "sword": "LT4"
+    },
+    "rankedBy": "1_truthoflife_1",
+    "rankedAt": "2026-09-28"
   }
 };

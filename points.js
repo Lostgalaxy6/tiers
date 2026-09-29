@@ -1,35 +1,34 @@
 // SparkTiers — Points & Titles Configuration
-// Edit these values to your liking.
-// ─────────────────────────────────────────
+// Edit freely. Tier order: HT1 (best) > LT1 > HT2 > LT2 > HT3 > LT3 > HT4 > LT4 > HT5 > LT5 > HT6 > LT6 (worst)
 
-// How many points each tier is worth.
-// These determine the overall leaderboard order.
 const TIER_PTS = {
   HT1: 1000,
-  HT2: 800,
-  HT3: 600,
-  HT4: 400,
-  HT5: 60,
-  HT6: 30,
   LT1: 900,
-  LT2: 750,
-  LT3: 550,
-  LT4: 370,
-  LT5: 40,
+  HT2: 800,
+  LT2: 700,
+  HT3: 600,
+  LT3: 500,
+  HT4: 400,
+  LT4: 300,
+  HT5: 150,
+  LT5: 100,
+  HT6: 50,
   LT6: 20,
 };
 
-// Rank titles shown under a player's name.
-// "tiers" — which tiers trigger this title.
-// "title" — the text shown on the site.
-// "color" — the color of the title text (hex).
-// Order matters — first match wins.
+// Special condition: Combat Grandmaster requires HT1 in at least 4 gamemodes
+const GRANDMASTER_REQUIRED_HT1 = 4;
+
+// Rank titles — order matters, first match wins.
+// For Combat Grandmaster the HT1 x4 condition is checked automatically.
 const RANK_TITLES = [
-  { tiers: ['HT1'],               title: 'Combat Legend',      color: '#ff3333' },
-  { tiers: ['HT2'],               title: 'Combat Grandmaster', color: '#ff6600' },
-  { tiers: ['HT3'],               title: 'Combat Master',      color: '#f5a623' },
-  { tiers: ['HT4', 'HT5', 'HT6'], title: 'Combat Ace',         color: '#a3e635' },
-  { tiers: ['LT1', 'LT2'],         title: 'Combat Expert',      color: '#818cf8' },
-  { tiers: ['LT3', 'LT4'],         title: 'Combat Veteran',     color: '#94a3b8' },
-  { tiers: ['LT5', 'LT6'],         title: 'Combat Rookie',      color: '#64748b' },
+  { tiers: ['HT1'],                   title: 'Combat GrandMaster', color: '#ff3333', ht1Required: 4 },
+  { tiers: ['LT1'],                   title: 'Combat Master',      color: '#ff6600' },
+  { tiers: ['HT2'],                   title: 'Combat Ace',         color: '#f5a623' },
+  { tiers: ['LT2'],                   title: 'Combat Expert',      color: '#e8c840' },
+  { tiers: ['HT3'],                   title: 'Combat Veteran',     color: '#a3e635' },
+  { tiers: ['LT3'],                   title: 'Combat Skilled',     color: '#6dbd45' },
+  { tiers: ['HT4'],                   title: 'Combat Trainee',     color: '#22d3ee' },
+  { tiers: ['LT4'],                   title: 'Combat Rookie',      color: '#38bdf8' },
+  { tiers: ['HT5','LT5','HT6','LT6'],title: 'Combat Noob',        color: '#94a3b8' },
 ];

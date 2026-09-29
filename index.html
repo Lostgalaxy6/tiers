@@ -418,7 +418,8 @@ let curGM = 'overall', curRegion = 'AS';
 // ══════════════════════════════════════════════
 //  HELPERS
 // ══════════════════════════════════════════════
-const headURL = n => `https://mc-heads.net/avatar/${encodeURIComponent(n)}/40`;
+const headURL = (n, skin) => `https://mc-heads.net/avatar/${encodeURIComponent(skin||n)}/40`;
+const skinURL = (n, skin) => `https://mc-heads.net/skin/${encodeURIComponent(skin||n)}`;
 
 const CUSTOM_ICONS = {
   dsmp:  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgBAMAAAB54XoeAAAAHlBMVEUAAAD39Pfh1+G6m7qjgaKOZ414WXhlSGReLlw6FDo7QZHlAAAAAXRSTlMAQObYZgAAALhJREFUeNrt2DENBCEQheGzcBawsBawgAUsYAEL6/bycsm8QJZ2m/n/Cor5uingQ0RE9GKXAgQEPA8XBQgI+AgW9Y0uNdYAAXODVjewRV0NNRUgYG6wRF69GjU11K0AATOCVm1N1ZXBrqYCBMwIjrWumqrK123/AAFTgLa24Rq1ta4AAdOCXXnEVzciQMCMoFXTPh3/CQABM4JTWfWbx8yTBQiYB3S3mmtHCxAwJWj1lC1AQEAi+vcDvaVx/9yMcacAAAAASUVORK5CYII=',
@@ -566,7 +567,7 @@ function makeSkin(wrap,name,w,h,opts={}){
   const c=document.createElement('canvas');
   c.width=w*2;c.height=h*2;c.style.width=w+'px';c.style.height=h+'px';
   wrap.appendChild(c);
-  const v=new skinview3d.SkinViewer({canvas:c,width:w*2,height:h*2,skin:skinURL(name)});
+  const v=new skinview3d.SkinViewer({canvas:c,width:w*2,height:h*2,skin:`https://mc-heads.net/skin/${encodeURIComponent(name)}`});
   v.renderer.setClearColor(0x000000,0);
   v.camera.position.z=opts.zoom||55;v.camera.position.y=opts.camY||8;
   if(opts.walk){v.animation=new skinview3d.WalkingAnimation();v.animation.speed=0.5;}

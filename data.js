@@ -58,7 +58,7 @@ const SPARK_DATA = {
     "rankedAt": "2026-09-28"
   },
   "voidreign": {
-    "name": "VOIDREIGN_XD",
+    "name": "VOIDREIGN",
     "region": "AS",
     "tiers": {
       "nethop": "LT4"
@@ -80,6 +80,15 @@ const SPARK_DATA = {
     "region": "AS",
     "tiers": {
       "mace": "HT5"
+    },
+    "rankedBy": "1_truthoflife_1",
+    "rankedAt": "2026-09-29"
+  },
+  "yoichi": {
+    "name": "yoichi",
+    "region": "AS",
+    "tiers": {
+      "nethop": "HT5"
     },
     "rankedBy": "1_truthoflife_1",
     "rankedAt": "2026-09-29"

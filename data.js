@@ -93,5 +93,14 @@ const SPARK_DATA = {
     },
     "rankedBy": "1_truthoflife_1",
     "rankedAt": "2026-09-29"
+  },
+  "itzmeshubham": {
+    "name": "itzmeshubham",
+    "region": "AS",
+    "tiers": {
+      "axe": "LT6"
+    },
+    "rankedBy": "lostgalax_y",
+    "rankedAt": "2026-09-29"
   }
 };

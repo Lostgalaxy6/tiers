@@ -2,18 +2,18 @@
 // Edit freely. Tier order: HT1 (best) > LT1 > HT2 > LT2 > HT3 > LT3 > HT4 > LT4 > HT5 > LT5 > HT6 > LT6 (worst)
 
 const TIER_PTS = {
-  HT1: 1000,
-  LT1: 900,
-  HT2: 800,
-  LT2: 700,
-  HT3: 600,
-  LT3: 500,
-  HT4: 400,
-  LT4: 300,
-  HT5: 150,
-  LT5: 100,
-  HT6: 50,
-  LT6: 20,
+  HT1: 80,
+  LT1: 64,
+  HT2: 40,
+  LT2: 33,
+  HT3: 24,
+  LT3: 18,
+  HT4: 14,
+  LT4: 8,
+  HT5: 5,
+  LT5: 3,
+  HT6: 2,
+  LT6: 1,
 };
 
 // Special condition: Combat Grandmaster requires HT1 in at least 4 gamemodes

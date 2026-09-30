@@ -115,5 +115,14 @@ const SPARK_DATA = {
     },
     "rankedBy": "lostgalax_y",
     "rankedAt": "2026-09-29"
+  },
+  "zecaht3": {
+    "name": "ZecaHT3",
+    "region": "AS",
+    "tiers": {
+      "mace": "HT5"
+    },
+    "rankedBy": "lostgalax_y",
+    "rankedAt": "2026-09-30"
   }
 };

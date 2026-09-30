@@ -120,9 +120,10 @@ const SPARK_DATA = {
     "name": "ZecaHT3",
     "region": "AS",
     "tiers": {
-      "mace": "HT5"
+      "mace": "HT5",
+      "spear": "HT5"
     },
-    "rankedBy": "lostgalax_y",
+    "rankedBy": "1_truthoflife_1",
     "rankedAt": "2026-09-30"
   }
 };

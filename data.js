@@ -15,10 +15,11 @@ const SPARK_DATA = {
     "name": "Lostgalaxy67",
     "region": "AS",
     "tiers": {
-      "mace": "HT4"
+      "mace": "HT4",
+      "dsmp": "LT6"
     },
     "rankedBy": "lostgalax_y",
-    "rankedAt": "2026-09-27"
+    "rankedAt": "2026-09-30"
   },
   "not_ry": {
     "name": "Not_RY",

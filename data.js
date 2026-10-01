@@ -135,5 +135,15 @@ const SPARK_DATA = {
     },
     "rankedBy": "lostgalax_y",
     "rankedAt": "2026-10-01"
+  },
+  "golu": {
+    "name": "Golu",
+    "region": "AS",
+    "tiers": {
+      "mace": "HT1"
+    },
+    "rankedBy": "atkillerninja",
+    "rankedAt": "2026-10-01",
+    "skinName": "Wrestler"
   }
 };

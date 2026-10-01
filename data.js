@@ -121,9 +121,10 @@ const SPARK_DATA = {
     "name": "Manik50589",
     "region": "AS",
     "tiers": {
-      "mace": "LT4"
+      "mace": "LT4",
+      "nethop": "HT5"
     },
-    "rankedBy": "lostgalax_y",
+    "rankedBy": "1_truthoflife_1",
     "rankedAt": "2026-10-01"
   }
 };

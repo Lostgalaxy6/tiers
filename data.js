@@ -125,5 +125,14 @@ const SPARK_DATA = {
     },
     "rankedBy": "1_truthoflife_1",
     "rankedAt": "2026-09-30"
+  },
+  "l0wkeyp4tr1ck": {
+    "name": "L0WKEYP4TR1CK",
+    "region": "AS",
+    "tiers": {
+      "nethop": "HT5"
+    },
+    "rankedBy": "1_truthoflife_1",
+    "rankedAt": "2026-10-01"
   }
 };

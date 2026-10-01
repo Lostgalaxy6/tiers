@@ -126,5 +126,14 @@ const SPARK_DATA = {
     },
     "rankedBy": "1_truthoflife_1",
     "rankedAt": "2026-10-01"
+  },
+  "shadow_beterme": {
+    "name": "Shadow_Beterme",
+    "region": "AS",
+    "tiers": {
+      "sword": "HT5"
+    },
+    "rankedBy": "lostgalax_y",
+    "rankedAt": "2026-10-01"
   }
 };

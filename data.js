@@ -131,7 +131,8 @@ const SPARK_DATA = {
     "name": "Shadow_Beterme",
     "region": "AS",
     "tiers": {
-      "sword": "HT5"
+      "sword": "HT5",
+      "smp": "HT5"
     },
     "rankedBy": "lostgalax_y",
     "rankedAt": "2026-10-01"

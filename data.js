@@ -103,10 +103,11 @@ const SPARK_DATA = {
     "region": "AS",
     "tiers": {
       "mace": "HT5",
-      "spear": "HT5"
+      "spear": "HT5",
+      "smp": "LT4"
     },
-    "rankedBy": "1_truthoflife_1",
-    "rankedAt": "2026-09-30"
+    "rankedBy": "lostgalax_y",
+    "rankedAt": "2026-10-01"
   },
   "l0wkeyp4tr1ck": {
     "name": "L0WKEYP4TR1CK",

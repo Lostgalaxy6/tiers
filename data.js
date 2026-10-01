@@ -16,10 +16,11 @@ const SPARK_DATA = {
     "region": "AS",
     "tiers": {
       "mace": "HT4",
-      "dsmp": "LT6"
+      "dsmp": "LT6",
+      "pot": "HT1"
     },
     "rankedBy": "lostgalax_y",
-    "rankedAt": "2026-09-30"
+    "rankedAt": "2026-10-01"
   },
   "not_ry": {
     "name": "Not_RY",

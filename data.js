@@ -116,5 +116,14 @@ const SPARK_DATA = {
     },
     "rankedBy": "1_truthoflife_1",
     "rankedAt": "2026-10-01"
+  },
+  "manik50589": {
+    "name": "Manik50589",
+    "region": "AS",
+    "tiers": {
+      "mace": "LT4"
+    },
+    "rankedBy": "lostgalax_y",
+    "rankedAt": "2026-10-01"
   }
 };

@@ -138,5 +138,15 @@ const SPARK_DATA = {
     },
     "rankedBy": "lostgalax_y",
     "rankedAt": "2026-10-01"
+  },
+  "propox5963": {
+    "name": "propox5963",
+    "region": "AS",
+    "tiers": {
+      "mace": "HT4"
+    },
+    "rankedBy": "lostgalax_y",
+    "rankedAt": "2026-10-06",
+    "skinName": "Zedzor_"
   }
 };

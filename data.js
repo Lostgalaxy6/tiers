@@ -148,5 +148,14 @@ const SPARK_DATA = {
     "rankedBy": "lostgalax_y",
     "rankedAt": "2026-10-06",
     "skinName": "Zedzor_"
+  },
+  "t1x_exper_2": {
+    "name": "T1x_Exper_2",
+    "region": "AS",
+    "tiers": {
+      "mace": "LT5"
+    },
+    "rankedBy": "lostgalax_y",
+    "rankedAt": "2026-10-07"
   }
 };
